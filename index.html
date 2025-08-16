@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Health Dashboard with 3D Login & Registration & Real-Time Simulation</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div id="app" role="main" aria-label="Health dashboard application">
+        <section id="login-page" aria-live="polite" aria-atomic="true" aria-relevant="text">
+            <div class="cube-container" aria-hidden="true">
+                <div class="cube-face face-front"></div>
+                <div class="cube-face face-back"></div>
+                <div class="cube-face face-right"></div>
+                <div class="cube-face face-left"></div>
+                <div class="cube-face face-top"></div>
+                <div class="cube-face face-bottom"></div>
+            </div>
+            <div id="forms-container">
+                <form id="login-form" aria-label="User login form" autocomplete="off" class="active">
+                    <h2>Welcome Back</h2>
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" name="username" required autocomplete="username" aria-required="true" aria-describedby="loginUserHelp" />
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" required autocomplete="current-password" aria-required="true" aria-describedby="loginPassHelp" />
+                    <div id="login-error" class="error-message" role="alert" aria-live="assertive"></div>
+                    <button type="submit" aria-label="Log in to dashboard">Log In</button>
+                    <div class="toggle-link" id="to-register" role="button" tabindex="0" aria-label="Switch to registration form">Don't have an account? Register</div>
+                </form>
+                <form id="register-form" aria-label="User registration form" autocomplete="off">
+                    <h2>Create Account</h2>
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" name="username" required autocomplete="username" aria-required="true" aria-describedby="regUserHelp" />
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" name="email" required autocomplete="email" aria-required="true" aria-describedby="regEmailHelp" />
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" name="password" required autocomplete="new-password" aria-required="true" aria-describedby="regPassHelp" />
+                    <label for="reg-confirm-password">Confirm Password</label>
+                    <input type="password" id="reg-confirm-password" name="confirm-password" required autocomplete="new-password" aria-required="true" aria-describedby="regConfirmPassHelp" />
+                    <div id="register-error" class="error-message" role="alert" aria-live="assertive"></div>
+                    <div id="register-success" class="info-message" aria-live="polite"></div>
+                    <button type="submit" aria-label="Register a new account">Register</button>
+                    <div class="toggle-link" id="to-login" role="button" tabindex="0" aria-label="Switch to login form">Already have an account? Login</div>
+                </form>
+            </div>
+        </section>
+
+        <section id="dashboard-page" aria-label="Health dashboard">
+            <div id="dashboard-header">
+                <h1>Health Dashboard</h1>
+                <button id="logout-btn" aria-label="Log out and return to login screen">Logout</button>
+            </div>
+
+            <section class="stats-summary" aria-label="Summary statistics">
+                <div class="stat-card" aria-label="Total steps taken today">
+                    <h2 id="total-steps">0</h2>
+                    <p>Steps</p>
+                </div>
+                <div class="stat-card" aria-label="Current heart rate">
+                    <h2 id="current-heart">--</h2>
+                    <p>BPM</p>
+                </div>
+                <div class="stat-card" aria-label="Total sleep hours last night">
+                    <h2 id="sleep-hours">--</h2>
+                    <p>Sleep Hours</p>
+                </div>
+            </section>
+
+            <section aria-label="Data visualization charts">
+                <canvas id="healthChart" aria-describedby="chartLegend"></canvas>
+                <div class="chart-legend" id="chartLegend">
+                    <span><span class="color-box steps-color"></span> Steps</span>
+                    <span><span class="color-box heart-color"></span> Heart Rate (BPM)</span>
+                    <span><span class="color-box sleep-color"></span> Sleep (hrs)</span>
+                </div>
+            </section>
+
+            <section style="margin-top:1.5rem; text-align:center; user-select:none; font-size:0.95rem;">
+                <p>Press the <strong>Spacebar</strong> or <strong>↑</strong>,<strong>↓</strong> keys to simulate walking/running and increase steps &amp; heart rate.</p>
+            </section>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
